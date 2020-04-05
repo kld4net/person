@@ -1,0 +1,74 @@
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+        <h2 class="text-center">تعديل بيانات شخص</h2>
+        <div class="card mt-3 text-right">
+            <div class="card-body">
+              <form  dir="rtl" [formGroup]="personForm" (ngSubmit)="updatePerson(personForm.value)">
+                <div class="form-group" >
+                    <div class="row">
+                      <div class="col-lg-3">
+                        <label>الاسم الأول </label>
+                        <input type="text" class="form-control" formControlName="personFirstName" />
+                      </div>
+                      <div class="col-lg-3">
+                        <label>الأب</label>
+                        <input type="text" class="form-control" formControlName="personSecondName" />
+                      </div>
+                      <div class="col-lg-3">
+                        <label>الجد</label>
+                        <input type="text" class="form-control" formControlName="personThirdName" />
+                      </div>
+                      <div class="col-lg-3">
+                        <label>العائلة</label>
+                        <input type="text" class="form-control" formControlName="personFamilyName" />
+                      </div>
+                    </div>
+  
+  
+                    <label class="col-md-4">الجنس </label>
+                    <select class="form-control" formControlName="personSex">
+                      <option value=0>ذكر</option>
+                      <option value=1>أنثى</option>
+                  </select>
+                  <label class="col-md-4">الحالة الاجتماعية </label>
+                  <select class="form-control" formControlName="personStatus">
+                    <option value=0>أعزب</option>
+                    <option value=1>متزوج</option>
+                  </select>
+  
+  
+                    <label class="col-md-4">تاريخ الميلاد </label>
+                    <input type="date" class="form-control" formControlName="personBirthdate" />
+  
+                    <label class="col-md-4">نوع الهوية </label>
+                    <select class="form-control" formControlName="personIdType">
+                      <option value=0>هوية وطنية</option>
+                      <option value=1>إقامة</option>
+                    </select>
+  
+                    <label class="col-md-4">رقم الهوية </label>
+                    <input type="text" class="form-control" formControlName="personIdNo" />
+  
+                    <label class="col-md-4">رقم الجوال </label>
+                    <input type="text" class="form-control" formControlName="personMobile" />
+                    
+                    <label class="col-md-4">البريد الالكتروني </label>
+                    <input type="text" class="form-control" formControlName="personEmail" />
+  
+                    <label class="col-md-4">العنوان </label>
+                    <textarea class="form-control rounded-0" formControlName="personAddress" rows="3"></textarea>
+  
+  
+  
+                  </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary col-md-4" [disabled]="personForm.invalid">تعديل</button>
+                  <a [routerLink]="['/person']">
+                    <button type="submit" class="btn btn-primary col-md-4 ml-1">رجوع</button>
+                  </a>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>

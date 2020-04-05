@@ -1,0 +1,13 @@
+.form-control  {
+    direction: rtl;
+  }
+
+  .col-md-4 {
+    direction: rtl;
+  }
+
+
+  .form-group.required .control-label::after{
+    color: red;
+    content: "*";
+ }

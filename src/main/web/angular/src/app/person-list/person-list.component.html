@@ -1,0 +1,51 @@
+<div class="container mt-5" dir="rtl">
+  <h2 class="text-center">قائمة الأشخاص
+  </h2>
+    <a class="float-right" [routerLink]="['/person/add']">
+      <button type="button" class="btn btn-primary">إضافة</button>
+    </a>
+
+    <table class="table table-bordered mt-5 text-center">
+      <thead>
+        <tr bgcolor="gray">
+          <th>م</th>
+          <th>رقم الهوية</th>
+          <th>الاسم</th>
+          <th>الجنس</th>
+          <th>الحالة الاجتماعية</th>
+          <th>تاريخ الميلاد</th>
+          <th>رقم الجوال</th>
+          <th>البريد الالكتروني</th>
+          <th>العنوان</th> 
+
+          <th>تعديل / حذف</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of data; let i = index;">
+              <td width="10">{{item.id}}</td>
+              <td width="10">{{item.personIdNo}}</td>
+              <td width="200">{{item.personFirstName+" "+item.personSecondName+" "+item.personThirdName+" "+item.personFamilyName}}</td>
+              <td *ngIf="(item.personSex == 0)" width="10">ذكر</td>
+              <td *ngIf="(item.personSex == 1)" width="10">أنثى</td>
+
+              <td *ngIf="(item.personStatus == 0)" width="100">أعزب</td>
+              <td *ngIf="(item.personStatus == 1)" width="100">متزوج</td>
+
+              <td width="100">{{item.personBirthdate}}</td>
+              <td width="10">{{item.personMobile}}</td>
+              <td width="10">{{item.personEmail}}</td>
+              <td width="10">{{item.personAddress}}</td>
+
+
+              <td width="140" >                
+                
+                <a [routerLink]="['/person/edit/', item.id]">
+                  <button type="button" class="btn btn-primary">تعديل</button>
+                </a>
+                <button type="button" class="btn btn-danger mr-1" (click)="deletePerson(item.id, i)">حذف</button>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
