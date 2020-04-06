@@ -1,71 +1,158 @@
 <div class="row mt-5">
-    <div class="col-md-6 mx-auto">
-        <h2 class="text-center">تعديل بيانات شخص</h2>
+    <div class="col-md-10 mx-auto">
+        <h2 class="text-right">تعديل بيانات شخص</h2>
         <div class="card mt-3 text-right">
             <div class="card-body">
               <form  dir="rtl" [formGroup]="personForm" (ngSubmit)="updatePerson(personForm.value)">
-                <div class="form-group" >
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <label>الاسم الأول </label>
-                        <input type="text" class="form-control" formControlName="personFirstName" />
+                <div class="form-group required" >
+                
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label class="control-label" for="personFirstName">الاسم الأول </label>
+                      <input type="text" class="form-control" required="required" formControlName="personFirstName" />
+  
+  
+                      <div
+                      *ngIf="!personFirstName?.valid && (personFirstName?.dirty ||personFirstName?.touched)">
+                      <div color="red" [hidden]="!personFirstName.errors.pattern">
+                       <font color="red"> يجب إدخال الاسم بصيغة صحيحة</font>
                       </div>
-                      <div class="col-lg-3">
-                        <label>الأب</label>
-                        <input type="text" class="form-control" formControlName="personSecondName" />
                       </div>
-                      <div class="col-lg-3">
-                        <label>الجد</label>
-                        <input type="text" class="form-control" formControlName="personThirdName" />
+  
+  
+                    </div>
+                    <div class="col-md-3">
+                      <label for="personSecondName">الأب</label>
+                      <input type="text" class="form-control" formControlName="personSecondName" />
+  
+  
+                      <div
+                      *ngIf="!personSecondName?.valid && (personSecondName?.dirty ||personSecondName?.touched)">
+                      <div color="red" [hidden]="!personSecondName.errors.pattern">
+                       <font color="red"> يجب إدخال الاسم بصيغة صحيحة</font>
                       </div>
-                      <div class="col-lg-3">
-                        <label>العائلة</label>
-                        <input type="text" class="form-control" formControlName="personFamilyName" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label>الجد</label>
+                      <input type="text" class="form-control" formControlName="personThirdName" />
+                      <div
+                      *ngIf="!personThirdName?.valid && (personThirdName?.dirty ||personThirdName?.touched)">
+                      <div color="red" [hidden]="!personThirdName.errors.pattern">
+                       <font color="red"> يجب إدخال الاسم بصيغة صحيحة</font>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="control-label" for="personFamilyName">العائلة </label>
+                      <input type="text" class="form-control" required="required" formControlName="personFamilyName"  />
+  
+                      <div
+                      *ngIf="!personFamilyName?.valid && (personFamilyName?.dirty ||personFamilyName?.touched)">
+                      <div color="red" [hidden]="!personFamilyName.errors.pattern">
+                       <font color="red"> يجب إدخال الاسم بصيغة صحيحة</font>
+                      </div>
                       </div>
                     </div>
   
-  
-                    <label class="col-md-4">الجنس </label>
-                    <select class="form-control" formControlName="personSex">
-                      <option value=0>ذكر</option>
-                      <option value=1>أنثى</option>
-                  </select>
-                  <label class="col-md-4">الحالة الاجتماعية </label>
-                  <select class="form-control" formControlName="personStatus">
-                    <option value=0>أعزب</option>
-                    <option value=1>متزوج</option>
-                  </select>
-  
-  
-                    <label class="col-md-4">تاريخ الميلاد </label>
-                    <input type="date" class="form-control" formControlName="personBirthdate" />
-  
-                    <label class="col-md-4">نوع الهوية </label>
-                    <select class="form-control" formControlName="personIdType">
-                      <option value=0>هوية وطنية</option>
-                      <option value=1>إقامة</option>
-                    </select>
-  
-                    <label class="col-md-4">رقم الهوية </label>
-                    <input type="text" class="form-control" formControlName="personIdNo" />
-  
-                    <label class="col-md-4">رقم الجوال </label>
-                    <input type="text" class="form-control" formControlName="personMobile" />
-                    
-                    <label class="col-md-4">البريد الالكتروني </label>
-                    <input type="text" class="form-control" formControlName="personEmail" />
-  
-                    <label class="col-md-4">العنوان </label>
-                    <textarea class="form-control rounded-0" formControlName="personAddress" rows="3"></textarea>
-  
-  
-  
                   </div>
+  
+               
+                    
+  
+                  <div class="row">
+  
+                  <div class="col-md-3">
+                  <label class="control-label" for="personIdType">نوع الهوية </label>
+                  <select class="form-control" required="required" formControlName="personIdType">
+                    <option value=0>هوية وطنية</option>
+                    <option value=1>إقامة</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="control-label" for="personIdNo">رقم الهوية </label>
+                  <input type="number" class="form-control" required="required" formControlName="personIdNo"  />
+  
+                  <div
+                  *ngIf="!personIdNo?.valid && (personIdNo?.dirty ||personIdNo?.touched)">
+                  <div color="red" [hidden]="!personIdNo.errors.pattern">
+                   <font color="red"> رقم الهوية يجب أن يكون عشر أرقام</font>
+                  </div>
+                  </div>
+  
+                </div>
+                  </div>
+                  
+                  
+                  <div class="row">
+  
+  
+                    <div class="col-md-3">
+                  <label class="control-label" for="personSex">الجنس </label>
+                  <select class="form-control" required="required" formControlName="personSex">
+                    <option value=0>ذكر</option>
+                    <option value=1>أنثى</option>
+                </select>
+                    </div>
+  
+                    <div class="col-md-3">
+                <label>الحالة الاجتماعية </label>
+                <select class="form-control" formControlName="personStatus">
+                  <option value=0>أعزب</option>
+                  <option value=1>متزوج</option>
+                </select>
+                    </div>
+  
+                    <div class="col-md-3">
+  
+                  <label>تاريخ الميلاد </label>
+                  <input type="date" class="form-control" formControlName="personBirthdate" />
+                  </div>
+                  </div>
+                  
+                  
+                  <div class="row">
+                    <div class="col-md-3">
+                  <label>رقم الجوال </label>
+                  <input type="text"  class="form-control" formControlName="personMobile" />
+  
+                  <div
+                  *ngIf="!personMobile?.valid && (personMobile?.dirty ||personMobile?.touched)">
+                  <div color="red" [hidden]="!personMobile.errors.pattern">
+                   <font color="red"> رقم الجوال المدخل غير صحيح</font>
+                  </div>
+                  </div>
+  
+                    </div>
+                    <div class="col-md-3">
+                  <label>البريد الالكتروني </label>
+                  <input type="text" class="form-control" formControlName="personEmail" />
+                  <div
+                      *ngIf="!personEmail?.valid && (personEmail?.dirty ||personEmail?.touched)">
+                      <div color="red" [hidden]="!personEmail.errors.email">
+                       <font color="red"> يجب إدخال الايميل بصيغة صحيحة</font>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+  
+                  <div class="col-md-6">
+                  <label>العنوان </label>
+                  <textarea class="form-control rounded-1 " formControlName="personAddress" rows="3"></textarea>
+                    </div>  
+                </div>
+  
+  
+                </div>
+                
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary col-md-4" [disabled]="personForm.invalid">تعديل</button>
-                  <a [routerLink]="['/person']">
-                    <button type="submit" class="btn btn-primary col-md-4 ml-1">رجوع</button>
+                  <div class="row">
+                  <button type="submit" class="btn btn-primary col-md-3 btn-primary" [disabled]="personForm.invalid">تعديل</button>
+                  <a [routerLink]="['/person']" class="col-md-6">
+                    <button type="submit" class="btn btn-primary col-md-6">رجوع</button>
                   </a>
+                  </div>
                 </div>
               </form>
             </div>

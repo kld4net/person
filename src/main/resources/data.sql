@@ -1,9 +1,9 @@
 
 insert into PERSONS(personFirstName,personSecondName,personThirdName,personFamilyName ,personSex ,personStatus ,personBirthdate,personIdType ,personIdNo ,personEmail ,personMobile ,personAddress) 
-values('خالد','محمد','عثمان','اباحسين' ,0 ,0 ,'2017-06-01',0 ,102661722 ,'khalid@sfd.gov.sa' ,'+9665553522' ,'حي الملك فهد') ;
+values('خالد','محمد','عثمان','اباحسين' ,0 ,0 ,'2017-06-01',0 ,1026617232 ,'khalid@sfd.gov.sa' ,'00966555555555' ,'حي الملك فهد') ;
 
 insert into PERSONS(personFirstName,personSecondName,personThirdName,personFamilyName ,personSex ,personStatus ,personBirthdate,personIdType ,personIdNo ,personEmail ,personMobile ,personAddress) 
-values('خالد','محمد','عثمان','اباحسين' ,0 ,0 ,'2017-06-01',0 ,102661722 ,'khalid@sfd.gov.sa' ,'+9665553522' ,'حي الملك فهد') ;
+values('خالد','محمد','عثمان','اباحسين' ,0 ,0 ,'2017-06-01',0 ,1026617222 ,'khalid@sfd.gov.sa' ,'00966555555551' ,'حي الملك فهد') ;
 
 
 

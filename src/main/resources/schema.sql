@@ -8,11 +8,12 @@ CREATE TABLE PERSONS(
 	     personStatus number,
 		 personBirthdate varchar(25),
 		 personIdType number,
-	     personIdNo number,
+	     personIdNo number ,
 		 personEmail varchar(25),
 		 personMobile varchar(25),
 		 personAddress varchar(50)
 );
+
 
 CREATE TABLE GROUP_PERMISSIONS(
                                   ID NUMBER NOT NULL,

@@ -21,21 +21,53 @@ export class EditPersonComponent implements OnInit {
     this.getDetail(this.activeAouter.snapshot.params['id']);
  
     this.personForm = this.formBuilder.group({
-      personFirstName: ['', [Validators.required]],
-      personSecondName: ['', [Validators.required]],
-      personThirdName: ['', [Validators.required]],
-      personFamilyName: ['', [Validators.required]],
-
-      personEmail: ['', [Validators.required]],
-      personSex: ['', [Validators.required]],
-      personStatus: ['', [Validators.required]],
-      personBirthdate: ['', [Validators.required]],
-      personIdType: ['', [Validators.required]],
-      personIdNo: ['', [Validators.required]],
-      personMobile: ['', [Validators.required]],
-      personAddress: ['', [Validators.required]]
+      personFirstName: ['',[Validators.required, Validators.pattern("^[أ-يa-zA-Z]+$")]],
+      personSecondName: ['',[Validators.pattern("^[أ-يa-zA-Z]*$")]],
+      personThirdName: ['',[Validators.pattern("^[أ-يa-zA-Z]*$")]],
+      personFamilyName: ['',[Validators.required, Validators.pattern("^[أ-يa-zA-Z]+$")]],
+      personSex: ['0', [Validators.required]],
+      personStatus: ['0'],
+      personBirthdate: [''],
+      personIdType: ['0', [Validators.required]],
+      personIdNo: ['', Validators.pattern("^[0-9]{10}")],
+      personEmail: ['',[Validators.email]],
+      personMobile: ['',Validators.pattern("^[0-9]{10}?[0-9]*")],
+      personAddress: ['']
     });
   }
+
+
+
+
+  get personFirstName() {
+    return this.personForm.get('personFirstName');
+ }
+
+
+ get personSecondName() {
+  return this.personForm.get('personSecondName');
+}
+
+
+get personThirdName() {
+  return this.personForm.get('personThirdName');
+}
+
+get personFamilyName() {
+  return this.personForm.get('personFamilyName');
+}
+
+get personEmail() {
+  return this.personForm.get('personEmail');
+}
+
+get personIdNo() {
+  return this.personForm.get('personIdNo');
+}
+
+get personMobile() {
+  return this.personForm.get('personMobile');
+}
  
   getDetail(id) {
     this.api.getPerson(id)
