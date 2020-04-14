@@ -8,7 +8,7 @@ CREATE TABLE PERSONS(
 	     personStatus number,
 		 personBirthdate varchar(25),
 		 personIdType number,
-	     personIdNo number ,
+	     personIdNo varchar(25) ,
 		 personEmail varchar(25),
 		 personMobile varchar(25),
 		 personAddress varchar(50)

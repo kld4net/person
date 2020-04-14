@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Person } from '../person';
+import { Person } from '../../person';
 
 @Component({
   selector: 'app-edit-person',
@@ -10,10 +10,11 @@ import { Person } from '../person';
   styleUrls: ['./edit-person.component.css']
 })
 export class EditPersonComponent implements OnInit {
-
+  
+  data: Person[] = [];
   personForm: FormGroup;
   id:number= null;
- 
+  prevPersonIdNo:string='';
   constructor(private formBuilder: FormBuilder, private activeAouter: ActivatedRoute, private router: Router, private api: ApiService) { }
  
   ngOnInit() {
@@ -33,6 +34,15 @@ export class EditPersonComponent implements OnInit {
       personEmail: ['',[Validators.email]],
       personMobile: ['',Validators.pattern("^[0-9]{10}?[0-9]*")],
       personAddress: ['']
+    });
+  
+
+
+
+    this.api.getPersons().subscribe(res => {
+      this.data = res; 
+    }, err => {
+      console.log(err);
     });
   }
 
@@ -73,6 +83,7 @@ get personMobile() {
     this.api.getPerson(id)
       .subscribe((data:Person) => {
         this.id = data.id;
+        this.prevPersonIdNo = data.personIdNo;
         this.personForm.setValue({
           personFirstName: data.personFirstName,
           personSecondName: data.personSecondName,
@@ -91,7 +102,27 @@ get personMobile() {
       });
   }
 
+
+
+  isExistedPersonIdNo(personIdNo:string):boolean{
+    if (personIdNo == this.prevPersonIdNo)
+    {
+      return false;
+    }
+
+    if (this.data.findIndex(res => personIdNo==res.personIdNo) != -1)
+    {
+      return true;
+    }
+  return false;
+      
+  
+    }
+
   updatePerson(form) {
+
+    if (!this.isExistedPersonIdNo(this.personForm.get('personIdNo').value))
+    {
     this.api.updatePerson(this.id, form)
       .subscribe(res => {
           this.router.navigate(['/']);
@@ -99,6 +130,11 @@ get personMobile() {
           console.log(err);
         }
       );
-     
+      }
+      else
+      {
+        alert("رقم الهوية مسجل سابقًا");
+      }
+
   }
 }

@@ -1,26 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+// import {ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
-import { PersonListComponent } from './person-list/person-list.component';
-import { AddPersonComponent } from './add-person/add-person.component';
-import { EditPersonComponent } from './edit-person/edit-person.component';
+import { PersonDashboardModule} from './person-dashboard/person-dashboard.module';
+// import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PersonListComponent,
-    AddPersonComponent,
-    EditPersonComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    // ReactiveFormsModule,
+    HttpClientModule,
+    // FormsModule,
+    PersonDashboardModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

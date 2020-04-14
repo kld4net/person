@@ -19,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void insert(PersonModel model){
+    public void insert(PersonModel model) {
         dao.insert(model);
     }
 

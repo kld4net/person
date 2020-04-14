@@ -1,12 +1,11 @@
 <div class="container mt-5" dir="rtl">
   <h2 class="text-center">قائمة الأشخاص
   </h2>
+  
     <a class="float-right" [routerLink]="['/person/add']">
       <button type="button" class="btn btn-primary">إضافة</button>
     </a>
 
-
-    
 <!-- 
     <div class="row">
       <div class="col-md-12 mx-auto">
@@ -23,9 +22,10 @@
       </div>
     </div> -->
 
+    <br><br>
+    <input class="form-control" type="text" placeholder="ابحث برقم الهوية" [ngModel]="test" (ngModelChange)="search($event)" width="200" />
 
-
-    <table class="table table-bordered mt-5 text-center">
+    <table class="table table-bordered mt-2 text-center">
       <thead>
         <tr bgcolor="gray">
           <th>م</th>
@@ -48,6 +48,7 @@
               <td width="200">{{item.personFirstName+" "+item.personSecondName+" "+item.personThirdName+" "+item.personFamilyName}}</td>
               <td *ngIf="(item.personSex == 0)" width="10">ذكر</td>
               <td *ngIf="(item.personSex == 1)" width="10">أنثى</td>
+              <!-- <td  width="10">{{item.personSex?'أنثى':'ذكر'}}</td> -->
 
               <td *ngIf="(item.personStatus == 0)" width="100">أعزب</td>
               <td *ngIf="(item.personStatus == 1)" width="100">متزوج</td>

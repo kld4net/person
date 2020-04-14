@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { Person } from '../person';
+import { ApiService } from '../../api.service';
+import { Person } from '../../person';
 @Component({
   selector: 'app-add-person',
   templateUrl: './add-person.component.html',
@@ -10,6 +10,8 @@ import { Person } from '../person';
 })
 export class AddPersonComponent implements OnInit {
 
+
+  data: Person[] = [];
   personForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) {}
  
@@ -30,6 +32,14 @@ export class AddPersonComponent implements OnInit {
       personAddress: ['']
 
     });
+    
+
+    this.api.getPersons().subscribe(res => {
+      this.data = res; 
+    }, err => {
+      console.log(err);
+    });
+
   }
  
   get personFirstName() {
@@ -62,6 +72,17 @@ get personMobile() {
   return this.personForm.get('personMobile');
 }
 
+isExistedPersonIdNo(personIdNo:string):boolean{
+
+  if (this.data.findIndex(res => personIdNo==res.personIdNo) != -1)
+  {
+    return true;
+  }
+return false;
+    
+
+  }
+  
   addPerson() {
     let person : Person = new Person(null,
       this.personForm.get('personFirstName').value,
@@ -77,15 +98,20 @@ get personMobile() {
     this.personForm.get('personMobile').value,
     this.personForm.get('personAddress').value);
     
-console.log(person.personEmail);
-
-
+    if (!this.isExistedPersonIdNo(this.personForm.get('personIdNo').value))
+    {
     this.api.addPerson(person).subscribe( (res:Person) => { 
       this.router.navigate(['/person']);
       
         }, (err) => {
+
           console.log(err);
         });
+      }
+      else
+      {
+        alert("رقم الهوية مسجل سابقًا");
+      }
   }
 
 }

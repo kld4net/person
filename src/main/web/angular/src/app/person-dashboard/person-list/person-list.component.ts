@@ -1,6 +1,6 @@
 import { Component, OnInit,HostListener } from '@angular/core';
-import { Person } from '../person';
-import { ApiService } from '../api.service';
+import { Person } from '../../person';
+import { ApiService } from '../../api.service';
 
 import { DecimalPipe } from '@angular/common';
 import { FormControl } from '@angular/forms';
@@ -21,9 +21,19 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class PersonListComponent implements OnInit {
 
+  test:string='';
+
   data: Person[] = [];
+  originalData: Person[];
   searchText: string = ''; 
   elements: any = []; 
+
+  search(value:any){
+    this.data=this.originalData.filter(t => t.personIdNo.includes(value));
+    // this.test=value;
+
+  }
+
 
   constructor(private api: ApiService) { }
 
@@ -53,6 +63,7 @@ export class PersonListComponent implements OnInit {
   ngOnInit() {
     this.api.getPersons().subscribe(res => {
       this.data = res;
+      this.originalData = res;
       console.log(res[0].personAddress);
     }, err => {
       console.log(err);

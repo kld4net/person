@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import sa.gov.sfd.employee.domain.person.PersonDao;
 import sa.gov.sfd.employee.model.PersonModel;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,17 @@ public class PersonDaoImpl implements PersonDao {
 
   @Override
   public boolean insert(PersonModel prApp) {
-    template.update("insert into PERSONS(personFirstName,personSecondName,personThirdName,personFamilyName ,personSex ,personStatus ,personBirthdate,personIdType ,personIdNo ,personEmail ,personMobile ,personAddress) values(?,?,?,? ,? ,? ,?,? ,? ,?,? ,?)",new Object[]{prApp.getPersonFirstName(),prApp.getPersonSecondName(),prApp.getPersonThirdName(),prApp.getPersonFamilyName(),prApp.getPersonSex(),prApp.getPersonStatus(),prApp.getPersonBirthdate(),prApp.getPersonIdType(),prApp.getPersonIdNo(),prApp.getPersonEmail(),prApp.getPersonMobile(),prApp.getPersonAddress()});
+    // try{
+    // if (template.queryForObject("select * from persons where personIdNo = ?",new Object[]{prApp.getPersonIdNo()}, new PersonMapper())!=null)
+    // {
+      template.update("insert into PERSONS(personFirstName,personSecondName,personThirdName,personFamilyName ,personSex ,personStatus ,personBirthdate,personIdType ,personIdNo ,personEmail ,personMobile ,personAddress) values(?,?,?,? ,? ,? ,?,? ,? ,?,? ,?)",new Object[]{prApp.getPersonFirstName(),prApp.getPersonSecondName(),prApp.getPersonThirdName(),prApp.getPersonFamilyName(),prApp.getPersonSex(),prApp.getPersonStatus(),prApp.getPersonBirthdate(),prApp.getPersonIdType(),prApp.getPersonIdNo(),prApp.getPersonEmail(),prApp.getPersonMobile(),prApp.getPersonAddress()});
+      return true;
+    // }
+    // } catch(SQLException e){
+    //   System.out.println("Noooooooo");
+    //   return false;
+    // }
 
-    return true;
   }
 
   @Override

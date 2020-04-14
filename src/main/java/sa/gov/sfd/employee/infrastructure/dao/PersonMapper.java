@@ -19,7 +19,7 @@ public class PersonMapper implements RowMapper<PersonModel> {
     Integer.parseInt(resultSet.getString("personStatus")),
     resultSet.getString("personBirthdate"),
     Integer.parseInt(resultSet.getString("personIdType")),
-    Integer.parseInt(resultSet.getString("personIdNo")),
+    resultSet.getString("personIdNo"),
     resultSet.getString("personEmail"),
     resultSet.getString("personMobile"),
     resultSet.getString("personAddress"));

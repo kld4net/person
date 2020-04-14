@@ -15,7 +15,7 @@ public class PersonModel {
     private int personStatus;
     private String personBirthdate;
     private int personIdType;
-    private int personIdNo;
+    private String personIdNo;
 	// @Email
 	private String personEmail;
 
@@ -33,7 +33,7 @@ public class PersonModel {
 		 int personStatus,
 		 String personBirthdate,
 		 int personIdType,
-		 int personIdNo,
+		 String personIdNo,
 		 String personEmail,
 		 String personMobile,
 		 String personAddress
@@ -118,11 +118,11 @@ public class PersonModel {
 		this.personIdType = personIdType;
 	}
 
-	public int getPersonIdNo() {
+	public String getPersonIdNo() {
 		return this.personIdNo;
 	}
 
-	public void setPersonIdNo(int personIdNo) {
+	public void setPersonIdNo(String personIdNo) {
 		this.personIdNo = personIdNo;
 	}
 
